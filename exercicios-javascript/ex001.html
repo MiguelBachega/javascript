@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 1 Javascript</title>
+</head>
+<body>
+        <h1>Tabuada</h1>
+         <input type="text" name="num" id="num" placeholder="Digite um número">
+         <input type="button" value="Enviar" onclick="execTabuada()">
+         <div id="output"></div>
+</body>
+<script>
+        let output = document.getElementById('output')
+        let msg =""
+        
+        function execTabuada(){
+            let i = parseFloat(document.getElementById('num').value);
+            if (!isNaN(i)) {
+                for(let n = 0; n <= 1000; n++){
+                msg += `${i} x ${n} = ${(i * n)} <br>` 
+            }
+            output.innerHTML = msg
+        }else{
+            output.innerHMTL = "Erro. Digite um número!"
+        }
+    }
+
+</script>
+</html>
