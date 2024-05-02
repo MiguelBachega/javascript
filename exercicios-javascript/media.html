@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>media</title>
+</head>
+<body>
+    <script>
+        "use strict";
+        function media(){
+            var res = 0
+            if(arguments.length === 0){
+                return console.log("0")
+            }
+            for(let i = 0; i < arguments.length; i++){
+                if(typeof arguments[i] === "string"){
+                return console.log("Erro. Digite somente números")
+            }
+                res += arguments[i]
+            }
+            return res/arguments.length
+            
+        }
+        
+        console.log(media())
+
+        
+    </script>
+</body>
+</html>
