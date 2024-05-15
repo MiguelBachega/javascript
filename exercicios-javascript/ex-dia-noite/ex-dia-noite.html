@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio dia e noite</title>
+    <style>
+        body{
+            background-color: rgb(24, 65, 247);
+            text-align: center;
+        }
+
+        header > h1{
+            color: white;
+        }
+
+        section{
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0px 2px solid black;
+            width: 300px;
+            padding: 15px;
+            margin: auto;
+        }
+
+        footer{
+            color: white;
+        }
+
+        #imagem{
+            margin-top: 30px;
+            width: 200px;
+        }
+    </style>
+</head>
+<body onload="carregar()" id="corpo">
+    <header>
+        <h1>Hora do Dia</h1>
+    </header>
+    <section>
+        <div id="msg">
+            <p>Teste</p>
+        </div>
+        <div id="foto">
+            <img id="imagem" src="img/dia.png" alt="foto do dia">
+        </div>       
+    </section>
+    <footer>
+        <p> &copy; CursoEmVideo</p>       
+    </footer>
+    
+</body>
+    <script>
+        
+        function carregar(){
+            let msg = document.getElementById("msg")
+            let imagem = document.getElementById("imagem")
+            let dia = new Date()
+            let hora = dia.getHours()
+            msg.innerHTML = `Agora são ${hora} horas`
+            if(hora >= 0 && hora < 12){
+                document.body.style.background = '#721f2e'
+                imagem.src = 'img/dia.png'
+            }else if(hora >= 12 && hora < 18){
+                document.body.style.background = '#f59b2c'
+                imagem.src = 'img/tarde.png'
+            }else{
+                document.body.style.background = '#000000'
+                imagem.src ='img/noite.png'
+            }
+        }
+    </script>
+</html>
