@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio dia e noite</title>
+    <style>
+        body{
+            background-color: rgb(24, 65, 247);
+            text-align: center;
+        }
+
+        header > h1{
+            color: white;
+        }
+
+        section{
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0px 2px solid black;
+            width: 500px;
+            padding: 15px;
+            margin: auto;
+        }
+
+        footer{
+            color: white;
+        }
+
+        #imagem{
+            margin-top: 30px;
+            width: 200px;
+        }
+
+        #res{
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body id="corpo">
+    <header>
+        <h1>Verificação de idade</h1>
+    </header>
+    <section>
+        <div id="msg">
+            <p>Ano de nascimento
+                <input type="number" name="ano" id="ano">
+            </p>
+            <p>Sexo:
+                <input type="radio" name="sexo" id="masc">
+                <label for="masc">Masculino</label>
+                <input type="radio" name="sexo" id="fem">
+                <label for="fem">Feminino</label>
+            </p>
+            <p>
+                Preencha as informações e clique em "Enviar" para ver o resultado!
+            </p>
+            <input type="button" value="Enviar" onclick="verificar()">
+        </div>
+        <div id="res">
+            
+        </div>       
+    </section>
+    <footer>
+        <p> &copy; CursoEmVideo</p>       
+    </footer>
+    
+</body>
+    <script>
+        
+        function verificar(){
+            let fano = document.getElementById("ano")
+            let dia = new Date()
+            let ano = dia.getFullYear()
+            if(fano.value.length <= 0 || fano.value > ano){
+                window.alert("{ERRO} Digite um ano válido")
+            }else {
+                var fsex = document.getElementsByName("sexo")
+                var idade = Number(ano) - fano.value
+                var genero = ""
+                var img = document.createElement("img")
+                img.setAttribute("id", "foto")
+                img.style.width = "400px"
+                img.style.borderRadius = "10px"
+                if(fsex[0].checked){
+                    genero = "Homem"
+                    if(idade > 0 && idade <= 10){
+                        img.setAttribute("src", "img/c-m.jpg")
+                    }else if(idade < 21){
+                        img.setAttribute("src", "img/j-m.jpg")
+                    }else if(idade < 50){
+                        img.setAttribute("src", "img/a-m.jpg")
+                    }else{
+                        img.setAttribute("src", "img/i-m.jpg")
+                    }
+                }else{
+                    genero = "Mulher"
+                    if(idade > 0 && idade <= 10){
+                        img.setAttribute("src", "img/c-f.jpg")
+                    }else if(idade < 21){
+                        img.setAttribute("src", "img/j-f.jpg")
+                    }else if(idade < 50){
+                        img.setAttribute("src", "img/a-f.jpg")
+                    }else{
+                        img.setAttribute("src", "img/i-f.jpg")
+                    }
+                }
+            }
+            
+            let res = document.getElementById("res")
+            if(fano.value <= 1908){
+                res.innerHTML = `Parabéns! Você é o(a) ${genero} mais velho(a) do planeta terra!`
+                res.appendChild(img)
+            }else
+                res.innerHTML = `Você é um(a) ${genero} com ${idade} anos`
+                res.appendChild(img)
+        }
+    </script>
+</html>
