@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio corrida</title>
+    <style>
+        body{
+            background-color: rgb(24, 65, 247);
+            text-align: center;
+        }
+
+        header > h1{
+            color: white;
+        }
+
+        section{
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0px 2px solid black;
+            width: 500px;
+            padding: 15px;
+            margin: auto;
+        }
+
+        footer{
+            color: white;
+        }
+
+        #imagem{
+            margin-top: 30px;
+            width: 200px;
+        }
+
+        #res{
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body id="corpo">
+    <header>
+        <h1>Vamos contar</h1>
+    </header>
+    <section>
+        <div id="msg">
+            <p>
+                Início:
+                <input type="number" name="inicio" id="_inicio">
+            </p>
+            <p>
+                Fim:
+                <input type="number" name="fim" id="_fim">
+            </p>
+            <p>
+                Passo:
+                <input type="number" name="passo" id="_passo">
+            </p>
+            <p id="res">
+                Preparando a contagem...
+            </p>
+            <input type="button" value="Contar" onclick="contar()">
+        </div>      
+    </section>
+    <footer>
+        <p> &copy; CursoEmVideo</p>       
+    </footer>
+    
+</body>
+    <script>
+        
+        function contar(){
+            let inicio = document.getElementById("_inicio")
+            let fim = document.getElementById("_fim")
+            let passo = document.getElementById("_passo")
+            let res = document.getElementById("res")
+            res.innerHTML = "Contando: "
+
+            if(inicio.value.length == 0 || fim.value.length == 0){
+                return res.innerHTML = "Impossível contar!"
+            } else {
+                let i = Number(inicio.value)
+                let f = Number(fim.value)
+                let p = Number(passo.value)
+                if(p <= 0){
+                    p = 1
+                    window.alert("Passo inválido! Considerando PASSO 1")
+                }
+                if(i < f){
+                //Contagem crescente
+                    for(i; i <= f; i += p){
+                         res.innerHTML += `${i} >> `
+                    }
+                }else{
+                //Contagem regressiva
+                    for(i; i >= f; i-= p){
+                        res.innerHTML += `${i} >> `
+                    }
+                }
+            }
+        }
+    </script>
+</html> 
