@@ -32,6 +32,10 @@
             font-size: 21px;
             font-weight: 500;
         }
+
+        select{
+            width: 300px;
+        }
     </style>
 </head>
 <body id="corpo">
@@ -67,7 +71,7 @@
             let elemento = document.getElementById("num")
             let selec = document.getElementById("selec")
             let e = Number(elemento.value)
-
+            
                 for(let i in vet){
                         if(e == vet[i]){
                             window.alert("Digite um número não repetido!")
@@ -81,26 +85,31 @@
                         let item = document.createElement('option')
                         item.text = `Valor ${e} adicionado`
                         selec.appendChild(item)
-                        console.log(vet)
+                        elemento.value = ''
+                        elemento.focus()
                         return vet 
             }
         }
         
         function finalizar(){
             let res = document.getElementById("res")
-           
-            vet.sort()
-            let soma = 0
-            let media = 0
-            res.innerHTML += `Ao todo, temos  ${vet.length} números cadastrados <br>`
-            res.innerHTML += `O maior valor informado foi ${vet[vet.length - 1]} <br>`
-            res.innerHTML += `O menor valor informado foi ${vet[0]} <br>`
-            for(let i in vet){
-               soma = soma + vet[i]
-               media = soma/(vet.length - 1)
+            if(vet.length == 0){
+                window.alert("Digite um número antes de finalizar!")
+            }else{
+                res.innerHTML = ''
+                vet.sort()
+                let soma = 0
+                let media = 0
+                res.innerHTML += `Ao todo, temos  ${vet.length} números cadastrados <br>`
+                res.innerHTML += `O maior valor informado foi ${vet[vet.length - 1]} <br>`
+                res.innerHTML += `O menor valor informado foi ${vet[0]} <br>`
+                for(let i in vet){
+                    soma = soma + vet[i]
+                    media = soma/(vet.length - 1)
             }
-            res.innerHTML += `Somando todos os valores temos ${soma} <br>`
-            res.innerHTML += `A média dos valores digitados é ${media} <br>`
-        }
+                res.innerHTML += `Somando todos os valores temos ${soma} <br>`
+                res.innerHTML += `A média dos valores digitados é ${media} <br>`
+        }  
+    }
     </script>
 </html> 
