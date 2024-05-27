@@ -66,10 +66,12 @@
     <script>
         "use strict"
         let vet = []
+        let res = document.getElementById("res")
         function adicionar(){
 
             let elemento = document.getElementById("num")
             let selec = document.getElementById("selec")
+            
             let e = Number(elemento.value)
             
                 for(let i in vet){
@@ -87,12 +89,13 @@
                         selec.appendChild(item)
                         elemento.value = ''
                         elemento.focus()
+                        res.innerHTML = ''
                         return vet 
             }
         }
         
         function finalizar(){
-            let res = document.getElementById("res")
+            
             if(vet.length == 0){
                 window.alert("Digite um número antes de finalizar!")
             }else{
